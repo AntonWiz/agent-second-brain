@@ -100,7 +100,9 @@
 ## Как это работает
 
 <p align="center">
-![Generated Image December 27, 2025 - 6_29PM](https://github.com/user-attachments/assets/2d15f8f2-bfcc-44c3-aace-edf2c9e62d74)
+
+![Generated Image December 27, 2025 - 6_29PM](https://github.com/user-attachments/assets/83a0e140-6fbd-4fa3-a799-2b8544663ab1)
+
 <p align="center">
 
 1. Вы отправляете голосовое/текст/фото в **Telegram**
