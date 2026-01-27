@@ -2,6 +2,39 @@
 
 Voice-first personal assistant for capturing thoughts and managing tasks via Telegram.
 
+## EVERY SESSION BOOTSTRAP
+
+**Before doing anything else, read these files in order:**
+
+1. `vault/MEMORY.md` — curated long-term memory (preferences, decisions, context)
+2. `vault/daily/YYYY-MM-DD.md` — today's entries
+3. `vault/daily/YYYY-MM-DD.md` — yesterday's entries (for continuity)
+4. `vault/goals/3-weekly.md` — this week's ONE Big Thing
+
+**Don't ask permission, just do it.** This ensures context continuity across sessions.
+
+---
+
+## SESSION END PROTOCOL
+
+**Before ending a significant session, write to today's daily:**
+
+```markdown
+## HH:MM [text]
+Session summary: [what was discussed/decided/created]
+- Key decision: [if any]
+- Created: [[link]] [if any files created]
+- Next action: [if any]
+```
+
+**Also update `vault/MEMORY.md` if:**
+- New key decision was made
+- User preference discovered
+- Important fact learned
+- Active context changed significantly
+
+---
+
 ## Mission
 
 Help user stay aligned with goals, capture valuable insights, and maintain clarity.
@@ -158,5 +191,5 @@ For personal overrides: create `CLAUDE.local.md`
 
 ---
 
-*System Version: 2.0*
-*Updated: 2024-12-20*
+*System Version: 2.1*
+*Updated: 2026-01-27*
