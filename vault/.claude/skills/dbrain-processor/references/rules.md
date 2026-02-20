@@ -1,85 +1,103 @@
 # Critical Processing Rules
 
-See [ABOUT.md](ABOUT.md) for user context and preferences.
-
-## Rule 1: Skip Processed Entries
-
-```
-If entry contains `<!-- ✓ processed` → SKIP COMPLETELY
-```
-
-Check AFTER each `## HH:MM` header for the marker.
-
-## Rule 2: Every Task = Date
-
-**NEVER create a task without `dueString`:**
-
-| Text | dueString |
-|------|-----------|
-| завтра | tomorrow |
-| в пятницу | friday |
-| на этой неделе | friday |
-| в четверг | thursday |
-| 15 января | January 15 |
-| NOT SPECIFIED | in 3 days |
-
-## Rule 3: Check Duplicates
-
-**BEFORE creating any task:**
-
-1. Call `find-tasks` with key words from task
-2. If similar task exists → **DO NOT CREATE**
-3. Mark as: `<!-- ✓ processed: task (duplicate) -->`
-
-## Rule 4: Consider Workload
-
-**BEFORE creating tasks:**
-
-1. Call `find-tasks-by-date` with `startDate: "today"`, `daysCount: 7`
-2. Count tasks per day
-3. If target day has 3+ tasks → shift to next day with less load
-
-## Rule 5: Mark After Processing
-
-After EACH processed entry, add marker:
-
-```markdown
-<!-- ✓ processed: {category} -->
-```
-
-For tasks with details:
-```markdown
-<!-- ✓ processed: task → Todoist: {name} {priority} {date} -->
-```
-
-## Rule 6: Apply Decision Filters
-
-Before saving any thought or task, check:
-- Это масштабируется?
-- Это можно автоматизировать?
-- Это усиливает экспертизу/бренд?
-- Это приближает к продукту/SaaS?
-
-If 2+ yes → boost priority.
-
-## Rule 7: Avoid Anti-Patterns
-
-NEVER create:
-- Абстрактные задачи без Next Action ("Подумать о...")
-- Хаотичные списки без приоритетов
-- Повторы без синтеза
-- Академическая теория без применения
-
-See [ABOUT.md](ABOUT.md) → Anti-Patterns section.
+> Читать вместе с `мок/профиль-антона.md` и `мок/классификация-записей.md`
 
 ---
 
-## Checklist Before Completion
+## Правило 1: Пропускать уже обработанные записи
 
-- [ ] All new entries processed
-- [ ] No duplicates in Todoist
-- [ ] All tasks have dates and concrete actions
-- [ ] Decision filters applied
-- [ ] Anti-patterns avoided
-- [ ] MOC files updated
-- [ ] Report generated
+```
+Если запись содержит <!-- ✓ обработано → ПРОПУСТИТЬ ПОЛНОСТЬЮ
+```
+
+Проверять ПОСЛЕ каждого заголовка `## HH:MM`.
+
+---
+
+## Правило 2: Каждая задача = дата
+
+**НИКОГДА не создавать задачу без дедлайна:**
+
+| Текст | Дедлайн |
+|-------|---------|
+| завтра | +1 день |
+| в пятницу | пятница |
+| на этой неделе | пятница текущей недели |
+| в четверг | четверг |
+| 26 февраля | 2026-02-26 |
+| НЕ УКАЗАНО | +3 дня |
+
+---
+
+## Правило 3: Проверять дубликаты
+
+**ПЕРЕД созданием любой задачи:**
+
+1. Проверить `мок/задачи-гтд.md` — поискать похожую задачу
+2. Если похожая есть → **НЕ СОЗДАВАТЬ**
+3. Пометить: `<!-- ✓ обработано: задача (дубликат) -->`
+
+---
+
+## Правило 4: Учитывать нагрузку
+
+**ПЕРЕД созданием задач:**
+
+1. Посмотреть `цели/3-неделя-текущая.md` — сколько задач уже стоит на день
+2. Если на целевой день 3+ задачи → перенести на следующий день с меньшей нагрузкой
+
+---
+
+## Правило 5: Помечать после обработки
+
+После КАЖДОЙ обработанной записи добавить маркер:
+
+```markdown
+<!-- ✓ обработано: {категория} -->
+```
+
+Для задач с деталями:
+```markdown
+<!-- ✓ обработано: задача → GTD: {название} {приоритет} {дата} -->
+```
+
+Для мыслей:
+```markdown
+<!-- ✓ обработано: идея → thoughts/ideas/2026-02-21-название.md -->
+```
+
+---
+
+## Правило 6: Применять фильтры решений
+
+Перед сохранением любой мысли или задачи проверить:
+
+1. **Приближает ли это к 3М/мес?**
+2. **Можно делегировать Алёне или Вике — или только я?**
+3. **Отрабатывает ли суперсилу?** (суперсила = извлекать суть из людей → продукт/система)
+4. **Это YouTube или через YouTube?** (тема года)
+
+Если 2+ «да» → повысить приоритет.
+
+---
+
+## Правило 7: Избегать антипаттернов
+
+НИКОГДА не создавать:
+- Абстрактные задачи без конкретного действия («Подумать о...»)
+- Хаотичные списки без приоритетов
+- Повторы без синтеза
+- Планы на год без шага на сегодня
+
+---
+
+## Чеклист перед завершением сессии
+
+- [ ] Все новые записи обработаны
+- [ ] Нет дублей в GTD / Milanote
+- [ ] У всех задач есть даты и конкретные действия
+- [ ] Фильтры решений применены
+- [ ] Антипаттерны не допущены
+- [ ] МОК-файлы обновлены (если добавлялись мысли)
+- [ ] Горячий контекст синхронизирован
+- [ ] Дневник обновлён
